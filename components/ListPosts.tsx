@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import Button from "./Button";
 
 interface Props {
   posts: Array<Post>;
@@ -16,17 +17,13 @@ function ListPosts({ posts }: Props) {
           <p className="exerpt">{post.data.excerpt}</p>
           <div className="container">
             <em className="published">Published on: {post.data.publishedOn}</em>
-            <button
-              className="readmore"
-              onClick={() =>
-                router.push({
-                  pathname: "/post/[slug]",
-                  query: { slug: encodeURIComponent(post.slug) },
-                })
-              }
-            >
-              Read more
-            </button>
+            <Button
+              href={{
+                pathname: "/post/[slug]",
+                query: { slug: encodeURIComponent(post.slug) },
+              }}
+              text="Read more"
+            />
           </div>
         </div>
       ))}
