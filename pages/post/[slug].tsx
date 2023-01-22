@@ -8,6 +8,7 @@ import { ParsedUrlQuery } from "querystring";
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 
 interface Props {
   meta: {
@@ -50,9 +51,7 @@ export default function Slug({
         <hr className="hr" />
         <div className="footer">
           <em className="published">Published on: {meta?.publishedOn}</em>
-          <button className="back" onClick={() => router.push("/")}>
-            Back
-          </button>
+          <Button href="/" text="Back" />
         </div>
       </div>
       <Footer />
@@ -81,11 +80,6 @@ export default function Slug({
         }
         .published {
           font-size: 0.8em;
-        }
-        .back {
-          background: darkmagenta;
-          padding: 1em;
-          border: none;
         }
         @media (min-width: 600px) {
           .container {
