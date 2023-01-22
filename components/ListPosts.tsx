@@ -37,6 +37,7 @@ function ListPosts({ posts }: Props) {
         .title,
         .exerpt {
           margin: 0 0 1em 0;
+          font-size: 1.2em;
         }
         .container {
           display: flex;
