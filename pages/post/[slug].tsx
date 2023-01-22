@@ -22,14 +22,19 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-export default function Slug({ meta, source }: Props) {
+export default function Slug({
+  meta = { title: "", publishedOn: "", excerpt: "" },
+  source,
+}: Props) {
+  const title = `Johan Saldes - ${meta?.title}`;
   const router = useRouter();
+  if (!source) return null;
   return (
     <div>
       <Head>
-        <title>Johan Saldes - {meta.title}</title>
+        <title>{title}</title>
         <meta name="author" content="Johan Saldes" />
-        <meta name="description" content={meta.excerpt} />
+        <meta name="description" content={meta?.excerpt} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -44,7 +49,7 @@ export default function Slug({ meta, source }: Props) {
         />
         <hr className="hr" />
         <div className="footer">
-          <em className="published">Published on: {meta.publishedOn}</em>
+          <em className="published">Published on: {meta?.publishedOn}</em>
           <button className="back" onClick={() => router.push("/")}>
             Back
           </button>
@@ -107,7 +112,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (ctx: GetStaticPropsContext<Params>) => {
   let { slug } = ctx.params!;
-  const post = getPost(slug as string)[0];
+  const post = getPost(slug as string)[0] as Post;
   const source = await serialize(post.content);
 
   return {

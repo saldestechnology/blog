@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const dirFiles = fs.readdirSync(path.join(process.cwd(), "pages", "posts"), {
+const dirFiles = fs.readdirSync(path.join(process.cwd(), "posts"), {
   withFileTypes: true,
 });
 
@@ -12,7 +12,7 @@ export const getPosts = (_: number): Array<Post> => {
       if (!file.name.endsWith(".mdx")) return;
 
       const fileContent = fs.readFileSync(
-        path.join(process.cwd(), "pages", "posts", file.name),
+        path.join(process.cwd(), "posts", file.name),
         "utf-8"
       );
       const { data, content } = matter(fileContent);
@@ -33,7 +33,7 @@ export const getPost = (slug: string) => {
       if (!file.name.match(slug)) return;
 
       const fileContent = fs.readFileSync(
-        path.join(process.cwd(), "pages", "posts", file.name),
+        path.join(process.cwd(), "posts", file.name),
         "utf-8"
       );
       const { data, content } = matter(fileContent);
