@@ -30,7 +30,7 @@ function ListPosts({ posts }: Props) {
       <style jsx>{`
         .post {
           margin: 1em auto;
-          width: 80%;
+          width: 90%;
           background-color: #0e0e0e;
           padding: 2em;
         }
