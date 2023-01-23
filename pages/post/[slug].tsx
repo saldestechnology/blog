@@ -43,7 +43,8 @@ export default function Slug({
         <MDXRemote
           {...source}
           components={{
-            h1: (props) => <h1 {...props} />,
+            h1: (props) => <h1 className="heading1" {...props} />,
+            h2: (props) => <h2 className="heading2" {...props} />,
             p: (props) => <p className="paragraph" {...props} />,
           }}
         />
@@ -63,13 +64,15 @@ export default function Slug({
           background-color: #0e0e0e;
           padding: 2em;
         }
-        h1,
-        .paragraph,
+        .heading1,
+        .heading2,
         .hr {
-          margin: 0 0 1em 0;
+          margin: 0 0 0.5em 0;
         }
         .paragraph {
           font-size: 1.2em;
+          line-height: 1.3em;
+          margin: 0 0 1em 0;
         }
         .hr {
           border: 1px solid darkmagenta;
