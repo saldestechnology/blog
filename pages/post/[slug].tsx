@@ -46,6 +46,7 @@ export default function Slug({
           components={{
             h1: (props) => <h1 className="heading1" {...props} />,
             h2: (props) => <h2 className="heading2" {...props} />,
+            hr: (props) => <hr className="hr" />,
             p: (props) => <p className="paragraph" {...props} />,
           }}
         />
